@@ -79,7 +79,7 @@ final class PrisonDetails
 		$decoded = Tools::decodeBin($json_array['block']);
 
 		if (preg_match('/^Detention Block [A-Z]+-[0-9]+$/u', $decoded) !== 1) {
-			throw new Exceptions\InvalidResponseException('Invalid "cell"');
+			throw new Exceptions\InvalidResponseException('Invalid "block"');
 		}
 
 		return $decoded;

@@ -103,24 +103,24 @@ class PrisonDetailsTest extends TestCase
 		$obj->getBlock();
 	}
 
-	// /**
-	//  * @dataProvider getImplementations
-	//  */
-	// public function test_fail_getPrisonDetails_invalid_block($obj)
-	// {
-	// 	$this->expectException(Exceptions\InvalidResponseException::class);
-	// 	$this->expectExceptionMessage('Missing "block"');
+	/**
+	 * @dataProvider getImplementations
+	 */
+	public function test_fail_getPrisonDetails_invalid_block($obj)
+	{
+		$this->expectException(Exceptions\InvalidResponseException::class);
+		$this->expectExceptionMessage('Invalid "block"');
 
-	// 	$mock = new MockHandler([
-	// 		new Response(200, ['access_token' => 'foo']),
-	// 		new Response(200, [], json_encode([
-	// 			'block' => '',
-	// 		])),
-	// 	]);
+		$mock = new MockHandler([
+			new Response(200, ['access_token' => 'foo']),
+			new Response(200, [], json_encode([
+				'block' => '',
+			])),
+		]);
 
-	// 	$guzzle_client = new GuzzleClient(['handler' => HandlerStack::create($mock)]);
-	// 	$obj->getClient()->setGuzzleClient($guzzle_client);
+		$guzzle_client = new GuzzleClient(['handler' => HandlerStack::create($mock)]);
+		$obj->getClient()->setGuzzleClient($guzzle_client);
 
-	// 	$obj->getBlock();
-	// }
+		$obj->getBlock();
+	}
 }
