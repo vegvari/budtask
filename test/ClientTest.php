@@ -37,6 +37,24 @@ class ClientTest extends TestCase
 	/**
 	 * @dataProvider getImplementations
 	 */
+	public function test_fail_getToken(Interfaces\Client $obj)
+	{
+		$this->expectException(Exceptions\InvalidResponseException::class);
+		$this->expectExceptionMessage('Unauthorized');
+
+		$mock = new MockHandler([
+			new Response(201, ['access_token' => 'foo']),
+		]);
+
+		$guzzle_client = new GuzzleClient(['handler' => HandlerStack::create($mock)]);
+		$obj->setGuzzleClient($guzzle_client);
+
+		$this->assertSame('foo', $obj->getToken());
+	}
+
+	/**
+	 * @dataProvider getImplementations
+	 */
 	public function test_getPrisonDetails(Interfaces\Client $obj)
 	{
 		$mock = new MockHandler([

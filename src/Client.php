@@ -45,6 +45,10 @@ final class Client implements Interfaces\Client
 				],
 			]);
 
+			if ($response->getStatusCode() !== 200) {
+				throw new Exceptions\InvalidResponseException('Unauthorized');
+			}
+
 			$this->token = $response->getHeader('access_token')[0];
 		}
 
