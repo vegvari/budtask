@@ -1,0 +1,9 @@
+language: php
+php:
+    - 7.2
+    - 7.3
+services:
+    - mysql
+script: phpunit --coverage-clover clover.xml
+before_script:
+    - composer install --no-interaction
