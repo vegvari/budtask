@@ -1,0 +1,27 @@
+{
+    "name": "vegvari/budtask-client",
+    "description": "Task for Bud, client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Romeo Vegvari",
+            "email": "vegvari@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "BudTask\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BudTask\\": "test/"
+        }
+    }
+}
