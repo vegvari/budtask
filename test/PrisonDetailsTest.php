@@ -38,4 +38,46 @@ class PrisonDetailsTest extends TestCase
 		$this->assertSame('Cell 2187', $obj->getCell());
 		$this->assertSame('Detention Block AA-23', $obj->getBlock());
 	}
+
+	/**
+	 * @dataProvider getImplementations
+	 */
+	public function test_fail_getPrisonDetails_missing_cell($obj)
+	{
+		$this->expectException(Exceptions\InvalidResponseException::class);
+		$this->expectExceptionMessage('Missing "cell"');
+
+		$mock = new MockHandler([
+			new Response(200, ['access_token' => 'foo']),
+			new Response(200, [], json_encode([
+				'block' => '',
+			])),
+		]);
+
+		$guzzle_client = new GuzzleClient(['handler' => HandlerStack::create($mock)]);
+		$obj->getClient()->setGuzzleClient($guzzle_client);
+
+		$obj->getCell();
+	}
+
+	/**
+	 * @dataProvider getImplementations
+	 */
+	public function test_fail_getPrisonDetails_missing_block($obj)
+	{
+		$this->expectException(Exceptions\InvalidResponseException::class);
+		$this->expectExceptionMessage('Missing "block"');
+
+		$mock = new MockHandler([
+			new Response(200, ['access_token' => 'foo']),
+			new Response(200, [], json_encode([
+				'cell' => '',
+			])),
+		]);
+
+		$guzzle_client = new GuzzleClient(['handler' => HandlerStack::create($mock)]);
+		$obj->getClient()->setGuzzleClient($guzzle_client);
+
+		$obj->getBlock();
+	}
 }

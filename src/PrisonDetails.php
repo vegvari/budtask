@@ -54,12 +54,22 @@ final class PrisonDetails
 	public function getCell(): string
 	{
 		$json_array = $this->getJsonArray();
+
+		if (! array_key_exists('cell', $json_array)) {
+			throw new Exceptions\InvalidResponseException('Missing "cell"');
+		}
+
 		return Tools::decodeBin($json_array['cell']);
 	}
 
 	public function getBlock(): string
 	{
 		$json_array = $this->getJsonArray();
+
+		if (! array_key_exists('block', $json_array)) {
+			throw new Exceptions\InvalidResponseException('Missing "block"');
+		}
+
 		return Tools::decodeBin($json_array['block']);
 	}
 }
