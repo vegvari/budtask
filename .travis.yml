@@ -2,8 +2,7 @@ language: php
 php:
     - 7.2
     - 7.3
-services:
-    - mysql
 script: phpunit --coverage-clover clover.xml
 before_script:
+    - cp .env.example .env
     - composer install --no-interaction
