@@ -1,4 +1,8 @@
-[![Build Status](https://travis-ci.org/vegvari/budtask.svg?branch=master)](https://travis-ci.org/vegvari/budtask) [![Test Coverage](https://api.codeclimate.com/v1/badges/5cd9b6f669044a743200d379/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/5cd9b6f669044a743200d379/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Build Status](https://travis-ci.org/vegvari/budtask.svg?branch=master)](https://travis-ci.org/vegvari/budtask)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8192e7f6492895207bd4/test_coverage)](https://codeclimate.com/github/vegvari/budtask/test_coverage)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/8192e7f6492895207bd4/maintainability)](https://codeclimate.com/github/vegvari/budtask/maintainability)
 
 # Bud task
 
