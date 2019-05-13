@@ -59,7 +59,13 @@ final class PrisonDetails
 			throw new Exceptions\InvalidResponseException('Missing "cell"');
 		}
 
-		return Tools::decodeBin($json_array['cell']);
+		$decoded = Tools::decodeBin($json_array['cell']);
+
+		if (preg_match('/^Cell [0-9]+$/u', $decoded) !== 1) {
+			throw new Exceptions\InvalidResponseException('Invalid "cell"');
+		}
+
+		return $decoded;
 	}
 
 	public function getBlock(): string
@@ -70,6 +76,12 @@ final class PrisonDetails
 			throw new Exceptions\InvalidResponseException('Missing "block"');
 		}
 
-		return Tools::decodeBin($json_array['block']);
+		$decoded = Tools::decodeBin($json_array['block']);
+
+		if (preg_match('/^Detention Block [A-Z]+-[0-9]+$/u', $decoded) !== 1) {
+			throw new Exceptions\InvalidResponseException('Invalid "cell"');
+		}
+
+		return $decoded;
 	}
 }
